@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Send</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href ="{% static '/life/css/bootstrap-datetimepicker.min.css' %}" />
+    <link rel="stylesheet" href ="{% static '/life/css/bootstrap-datetimepicker.min.js' %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+
+		<script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <style>
+    body,h2, h1, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif}
+    .header {
+    background:url('http://community102.com/wp-content/uploads/2014/06/facebook-logo-header-600.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: center;
+    display:block;
+    width:100%;
+    min-height:129px;
+    position: running(header);
+}
+      h1 {
+        border: 2px solid #002266;
+        background: #002266;
+        color: white;
+        height:75px;
+        width:400px;
+        border-radius: 25px;
+      }
+      
+      .row {
+        text-align: center;
+      }
+      .click, #message {
+        height:50px;
+        width:100px;
+        background-color:#B0B0B0;
+        color: white;
+        border-radius: 15px;
+        font-size: 16px;
+        margin-left: 20px;
+      }
+      table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+}
+
+td, th {
+    
+    text-align: left;
+    padding: 8px;
+
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+      
+@page {
+    @top-center { content: element(header) }
+}
+    </style>
+	</head>
+	<body>
+ 		<!-- Your layout here -->
+ <a href=".."><button class="click">&larr; Back</button></a>
+  {% block content %}
+    <form action="{{earn}}" method="post">
+        {% csrf_token %}
+
+        <center><h1>
+      Send Invitation
+      </h1></center>
+        <br>
+        <div class="container mb-5">
+            <div class="row">
+                {% for field in form  %}
+                    <div class="col-sm-6">
+                        <b>{{ field.label_tag }}</b>  {{ field }} 
+                        <br><br>
+                    </div>
+                {% endfor %}
+            </div>  
+        </div>
+      <center><input type="submit" value="Submit" id = "message"/></center>
+    </form>
+    {% endblock %}
+    
+    <script language="JavaScript">
+      function showMessage(){
+            var message = document.getElementById("message").value;
+            display.innerHTML= message;
+        }
+      function addItem() {
+        document.getElementById("block").innerHTML += "<div>item</div>";
+      }
+      $(function() {
+    $('.datetimepicker').datetimepicker();
+  });
+    </script>
+	</body>
+</html>

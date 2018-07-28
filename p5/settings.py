@@ -25,7 +25,7 @@ SECRET_KEY = '%#yv*5d73dv^#nt91vwbaf_&8(vshv9oj)1af9f2fb!6j=g3-#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', "p5-fibrahimb-fibrahimb910527.codeanyapp.com"]
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'p5.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +119,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/homepage.html'

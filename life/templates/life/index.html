@@ -1,20 +1,131 @@
 {% load static %}
-
 <!DOCTYPE html>
 
 <html>
 	<head>
 		<title></title>
 
-		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static '/life/vendors/bootstrap/css/bootstrap.css' %}" />
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
 
-		<script src="{% static '/life/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/life/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <style>
+    body,h2 {font-family: "Montserrat", sans-serif}
+    .header {
+    background:url('http://community102.com/wp-content/uploads/2014/06/facebook-logo-header-600.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: center;
+    display:block;
+    width:100%;
+    min-height:129px;
+    position: running(header);
+}
+      
+      .row {
+        text-align: center;
+      }
+      
+      .diff{
+        text-align: center;
+        position: absolute;
+top: 10px;
+left: 10px;
+      }
+      
+      .diffclick {
+        height:100px;
+        width:200px;
+        background-color:#003366;
+        color: white;
+        border-radius: 25px;
+        font-size: 16px;
+      }
+      .click {
+        height:100px;
+        width:300px;
+        background-color:#B0B0B0;
+        color: white;
+        border-radius: 25px;
+        font-size: 16px;
+      }
+      
+@page {
+    @top-center { content: element(header) }
+}
+    </style>
 	</head>
 	<body>
-		<!-- Your layout here -->
-
-	</body>
+          <div class="diff">
+            <div class="col">
+      <a href="applications/"><button class="diffclick"> View All Candidate Applications</button></a>
+        </br>
+      </br>
+      </div>  
+</div>
+    <div class="header" style="text-align:center;"></div>
+<div id="content">
+  </br>
+  </br>
+    <h2>
+      <center>Welcome! Review and schedule interviews for candidates here!</center>
+      </br>
+  </h2>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      <a href="send/"><button class="click"> Send Interview Invites</button></a>
+        </br>
+      </br>
+      </div>
+      <div class="col">
+      <a href="schedule/"><button class="click">View Scheduled Interviews</button></a>
+        </br>
+      </br>
+      </div>
+    </div>
+    <div class ="row">
+      <div class="col">
+      <a href="jobs/"><button class="click">Add New Job Listing</button></a>
+        </br>
+      </br>
+      </div>
+      <div class="col">
+      <a href="listings/"><button class="click">All Job Listings</button></a>
+        </br>
+      </br>
+      </div>
+    </div>
+ </div>
+ </body>
+<script>
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+  var csrftoken = getCookie('csrftoken');
+  
+  $('button').button().click(function (event) {
+  var postdata = {
+    'name':$('input').val(),
+    'csrfmiddlewaretoken': csrftoken
+  };
+  $.post('groups/', postdata);
+  });
+</script>
 </html>

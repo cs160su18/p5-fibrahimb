@@ -1,0 +1,26 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<div class="container">
+    <label for="uname"><b>Username:</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+  </br>
+</br> 
+</br>
+    <label for="psw"><b>Password:</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+</div>
+</br>
+</br>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <a href="life/homepage" class="btn btn-default">Login</a>
+  
+</form>
+
+{% endblock %}
